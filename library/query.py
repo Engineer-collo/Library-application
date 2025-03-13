@@ -72,13 +72,11 @@ def find_librarian_by_id():
 def query_library_records():
     library_records = session.query(Record).all()
     for record in library_records:
-        #print(record)
         if record.return_date == None:
             r = record.user_id
             b = record.book_id
             user = session.query(User).filter_by(id=r).first()
             book = session.query(Book).filter_by(id=b).first()
-    print(f" Name: {user.name}, Phone: {user.phone}, Book borrowed: {book.title} ")
+        print(f" Name: {user.name}, Phone: {user.phone}, Book borrowed: {book.title} ")
 
 
-query_library_records()
